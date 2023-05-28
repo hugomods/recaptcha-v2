@@ -1,0 +1,12 @@
+{{- $js := resources.Get "mods/recaptcha-v2/index.ts" }}
+{{- $opts := dict
+  "targetPath" "js/recaptcha-v2.js"
+  "minify" hugo.IsProduction
+}}
+{{- $js = $js | js.Build $opts }}
+<script src="{{ $js.RelPermalink }}" defer></script>
+{{- $lang := site.Language.Lang }}
+<script
+  src="https://www.google.com/recaptcha/api.js?onload=reCaptchaOnload&render=explicit&hl={{ $lang }}"
+  async
+  defer></script>

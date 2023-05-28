@@ -1,0 +1,3 @@
+{{- if .Page.Scratch.Get "reCaptcha-v2" }}
+  {{ partialCached "recaptcha-v2/assets/js" .Page }}
+{{- end }}
